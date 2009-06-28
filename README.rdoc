@@ -1,0 +1,12 @@
+= Mandy Sounds
+
+Mandy, while usually beeing quite calm, sometimes likes to make some noise.
+
+To get a grip of her check out this article about it:
+
+http://www.blog.mediaprojekte.de/webdevelopment/add-sound-effects-to-html-with-javascript-and-flash/
+
+== Usage
+
+You'll find an example use and the javascript function within the mandy html file. 
+

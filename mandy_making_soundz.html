@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script language="JavaScript">
+<!--
+$(document).ready( function () {
+  //attach click event onto paragraph
+	$("p").click( function() {
+		$("#player_div").empty();
+		$("#player_div").prepend(insertPlayer());
+	 } );
+
+   //append double click event onto headline
+	 $("h2").dblclick( function() {
+	 	$("#player_div").empty();
+		$("#player_div").prepend(insertPlayer());
+	 } );
+});
+
+/**
+ * render the flash embed to get mandy going
+ *
+ */
+function insertPlayer(){
+  //array of sound files found in following path variable
+	var soundz = ['gimme_money.mp3','hu_babe.mp3','oh_dude.mp3','again.mp3','script_4me.mp3']
+  var path		= 'soundz/';
+  //location of the flash player, relative from your website's root
+  var playerpath	= 'flash/singlemp3player.swf';
+	// the file to play with a little randomness
+	var filename	= path + soundz.random();
+  //construct the flash object embed
+	var mp3html = '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" ';
+	mp3html += 'width="1" height="1" ';
+	mp3html += 'codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab">';
+	mp3html += '<param name="movie" value="'+playerpath+'?';
+	mp3html += 'showDownload=false&file=' + filename + '&autoStart=true';
+	mp3html += '&backColor=ffffff&frontColor=ffffff';
+	mp3html += '&repeatPlay=false&songVolume=50" />';
+	mp3html += '<param name="wmode" value="transparent" />';
+	mp3html += '<embed wmode="transparent" width="1" height="1" ';
+	mp3html += 'src="' + playerpath + '?'
+	mp3html += 'showDownload=false&file=' + filename + '&autoStart=true';
+	mp3html += '&backColor=ffffff&frontColor=ffffff';
+	mp3html += '&repeatPlay=false&songVolume=50" ';
+	mp3html += 'type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />';
+	mp3html += '</object>';
+	return mp3html;
+}
+
+/**
+* takes an array and returns a random element
+*/
+Array.prototype.random = function( r )
+{
+	var i = 0, l = this.length;
+	if( !r ) { r = this.length; }
+	else if( r > 0 ) { r = r % l; }
+	else { i = r; r = l + r % l; }
+	return this[ Math.floor( r * Math.random() - i ) ];
+};
+
+//-->
+</script>
+<title>Mandy likes to make some noise</title>
+
+</head>
+<body>
+
+<h2>A Headline which reacts on doubleclick</h2>
+<p class="player">
+You can use any kind of html element event, this "paragraph" reacts on click.
+</p>
+<div id="player_div"></div>
+</body>
+</html>
